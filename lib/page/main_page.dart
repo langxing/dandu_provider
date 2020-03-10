@@ -1,4 +1,9 @@
+import 'package:dandu_provider/common/provider_manager.dart';
+import 'package:dandu_provider/page/home_page.dart';
+import 'package:dandu_provider/page/menu_page.dart';
+import 'package:dandu_provider/page/mine_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(App());
 
@@ -6,57 +11,34 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MainPage(title: 'Flutter Demo Home Page'),
+      color: Color(0xff313131),
+      home: MainPage(),
     );
   }
 }
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  static final PAGE_SETTING = 0;
+  static final PAGE_MAIN = 1;
+  static final PAGE_MINE = 2;
 
   @override
   _MainPageState createState() => _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final _controller = PageController();
+  final pageList = [MenuPage(), HomePage(), MinePage()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
+      body: MultiProvider(
+        providers: providers,
+        child: PageView.builder(
+          controller: _controller,
+          itemCount: pageList.length,
+          itemBuilder: (context, index) => pageList[index]),
       ),
     );
   }
