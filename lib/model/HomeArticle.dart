@@ -1,0 +1,30 @@
+package model
+
+class HomeArticle {
+    int code;
+    List<Data> datas;
+    String msg;
+    String status;
+
+    HomeArticle({this.code, this.datas, this.msg, this.status});
+
+    factory HomeArticle.fromJson(Map<String, dynamic> json) {
+        return HomeArticle(
+            code: json['code'], 
+            datas: json['datas'] != null ? (json['datas'] as List).map((i) => Data.fromJson(i)).toList() : null, 
+            msg: json['msg'], 
+            status: json['status'], 
+        );
+    }
+
+    Map<String, dynamic> toJson() {
+        final Map<String, dynamic> data = new Map<String, dynamic>();
+        data['code'] = this.code;
+        data['msg'] = this.msg;
+        data['status'] = this.status;
+        if (this.datas != null) {
+            data['datas'] = this.datas.map((v) => v.toJson()).toList();
+        }
+        return data;
+    }
+}
