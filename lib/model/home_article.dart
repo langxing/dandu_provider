@@ -1,6 +1,7 @@
-package model
+import 'hot_comment.dart';
+import 'tag.dart';
 
-class Data {
+class HomeArticle {
     String author;
     String avatar;
     String bookmark;
@@ -35,10 +36,10 @@ class Data {
     String video;
     String view;
 
-    Data({this.author, this.avatar, this.bookmark, this.category, this.comment, this.create_time, this.discover, this.excerpt, this.fm, this.fm_play, this.good, this.hot_comments, this.html5, this.id, this.lead, this.link_url, this.lunar_type, this.model, this.name, this.parseXML, this.position, this.publish_time, this.share, this.show_uid, this.status, this.tags, this.thumbnail, this.title, this.tpl, this.uid, this.update_time, this.video, this.view});
+    HomeArticle({this.author, this.avatar, this.bookmark, this.category, this.comment, this.create_time, this.discover, this.excerpt, this.fm, this.fm_play, this.good, this.hot_comments, this.html5, this.id, this.lead, this.link_url, this.lunar_type, this.model, this.name, this.parseXML, this.position, this.publish_time, this.share, this.show_uid, this.status, this.tags, this.thumbnail, this.title, this.tpl, this.uid, this.update_time, this.video, this.view});
 
-    factory Data.fromJson(Map<String, dynamic> json) {
-        return Data(
+    factory HomeArticle.fromJson(Map<String, dynamic> json) {
+        return HomeArticle(
             author: json['author'], 
             avatar: json['avatar'], 
             bookmark: json['bookmark'], 

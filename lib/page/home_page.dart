@@ -5,6 +5,10 @@ class HomePage extends StatelessWidget {
 
   HomePage({Key key, this.controller}) : super(key: key);
 
+  void loadData() {
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return null;

@@ -1,5 +1,3 @@
-package model
-
 class Tag {
     String name;
 
