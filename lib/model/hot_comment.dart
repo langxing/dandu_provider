@@ -1,3 +1,4 @@
+
 class HotComment {
     String avatar;
     String content;

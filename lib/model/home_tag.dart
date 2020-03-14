@@ -1,10 +1,11 @@
-class Tag {
+
+class HomeTag {
     String name;
 
-    Tag({this.name});
+    HomeTag({this.name});
 
-    factory Tag.fromJson(Map<String, dynamic> json) {
-        return Tag(
+    factory HomeTag.fromJson(Map<String, dynamic> json) {
+        return HomeTag(
             name: json['name'], 
         );
     }
