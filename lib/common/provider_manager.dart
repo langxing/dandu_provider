@@ -1,4 +1,4 @@
-import 'package:dandu_provider/provider/home_viewmodel.dart';
+import 'package:dandu_provider/page/home/home_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
