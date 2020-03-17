@@ -17,10 +17,7 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             Consumer<HomeViewModel>(
                 builder: (_, provider, child) {
-                  //showLoading(context);
-                  provider.requestData(context, () {
-                    //hideLoading(context);
-                  });
+                  provider.loadData(context);
                   /// 之所以不用listview,是因为每一个item是充满屏幕的
                   return PageView.builder(
                       scrollDirection: Axis.vertical,

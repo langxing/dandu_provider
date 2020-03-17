@@ -6,7 +6,7 @@ import 'package:dandu_provider/model/home_data.dart';
 import 'package:dandu_provider/widget/dialog/loading_manager.dart';
 import 'package:flutter/material.dart';
 
-class HomeViewModel extends BaseViewModel with ChangeNotifier {
+class HomeViewModel extends BaseViewModel {
   final LoadingManager _manager = LoadingManager();
   List<HomeData> data = [];
 
@@ -21,10 +21,6 @@ class HomeViewModel extends BaseViewModel with ChangeNotifier {
   
   @override
   void loadData(BuildContext context) async {
-
-  }
-
-  void requestData(BuildContext context, Function fun) async {
     await Future.delayed(Duration(milliseconds: 100), () {
       showLoading(context);
     }).then((_) => DefaultAssetBundle.of(context).loadString("json/HomeData.json")
@@ -34,11 +30,6 @@ class HomeViewModel extends BaseViewModel with ChangeNotifier {
       notifyListeners();
       hideLoading(context);
     });
-//    var str = await DefaultAssetBundle.of(context).loadString("json/HomeData.json");
-//    var model = HomeArticle.fromJson(json.decode(str));
-//    data = model.datas ;
-//    notifyListeners();
-//    fun();
   }
 
 }
