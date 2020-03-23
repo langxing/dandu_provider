@@ -1,5 +1,6 @@
 import 'package:dandu_provider/common/Constants.dart';
 import 'package:dandu_provider/model/home_data.dart';
+import 'package:dandu_provider/page/webview_page.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -145,7 +146,13 @@ class HomeItemView extends StatelessWidget {
         ),
       ),
       onTap: () {
-        print("点击了屏幕");
+        Navigator.of(context)
+            .push(MaterialPageRoute(
+            builder: (context) => WebViewPage(
+              url: "https://www.baidu.com",
+              title: _data.title,
+            )
+        ));
       },
     );
   }

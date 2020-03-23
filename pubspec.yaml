@@ -86,6 +86,7 @@ flutter:
     - image/icon_search.png
     - image/icon_close.png
     - image/img_default.png
+    - image/icon_empty.png
     - image/icon_default.png
     - image/store_normal_28x26_@2x.png
     - image/store_selected_28x26_@2x.png

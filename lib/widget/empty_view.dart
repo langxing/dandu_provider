@@ -8,8 +8,14 @@ class EmptyView extends StatelessWidget {
       color: Colors.white70,
       child: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset("image/icon_nodata.png"),
+            Image.asset(
+                "image/icon_empty.png",
+              width: 80,
+              height: 80,
+            ),
             Text(
               "暂无数据",
               style: TextStyle(

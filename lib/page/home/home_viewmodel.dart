@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dandu_provider/common/constants.dart';
 import 'package:dandu_provider/framework/base_viewmodel.dart';
 import 'package:dandu_provider/model/home_article.dart';
 import 'package:dandu_provider/model/home_data.dart';
@@ -9,7 +10,6 @@ import 'package:flutter/material.dart';
 class HomeViewModel extends BaseViewModel {
   final LoadingManager _manager = LoadingManager();
   List<HomeData> data = [];
-
 
   void showLoading(BuildContext context) {
     _manager.showLoading(context);
@@ -22,13 +22,13 @@ class HomeViewModel extends BaseViewModel {
   @override
   void loadData(BuildContext context) async {
     await Future.delayed(Duration(milliseconds: 100), () {
-      showLoading(context);
+      updatePageState(PageState.STATE_LOADING);
     }).then((_) => DefaultAssetBundle.of(context).loadString("json/HomeData.json")
     ).then((String val) => HomeArticle.fromJson(json.decode(val))
     ).then((HomeArticle model) {
       data = model.datas ;
       notifyListeners();
-      hideLoading(context);
+      updatePageState(PageState.STATE_NOMAL);
     });
   }
 

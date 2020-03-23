@@ -1,7 +1,7 @@
 import 'package:dandu_provider/common/provider_manager.dart';
 import 'package:dandu_provider/page/home/home_page.dart';
-import 'package:dandu_provider/page/menu_page.dart';
-import 'package:dandu_provider/page/mine_page.dart';
+import 'package:dandu_provider/page/menu/menu_page.dart';
+import 'package:dandu_provider/page/mine/mine_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

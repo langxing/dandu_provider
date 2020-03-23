@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
 class LoadingView extends StatelessWidget {
-  bool isHide = false;
-
-  LoadingView({this.isHide});
 
   @override
   Widget build(BuildContext context) {
-    return Offstage(
-      offstage: isHide,
+    return Container(
+      color: Colors.white70,
       child: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,8 +19,8 @@ class LoadingView extends StatelessWidget {
               child: Text(
                 "拼命加载中...",
                 style: TextStyle(
-                  color: Colors.green,
-                  fontSize: 13
+                    color: Colors.green,
+                    fontSize: 13
                 ),
               ),
             )
