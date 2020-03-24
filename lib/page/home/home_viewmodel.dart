@@ -21,7 +21,9 @@ class HomeViewModel extends BaseViewModel {
   
   @override
   void loadData(BuildContext context) async {
-    await Future.delayed(Duration(milliseconds: 100), () {
+    await Future.delayed(
+        Duration(milliseconds: 100)
+    ).then((_) {
       updatePageState(PageState.STATE_LOADING);
     }).then((_) => DefaultAssetBundle.of(context).loadString("json/HomeData.json")
     ).then((String val) => HomeArticle.fromJson(json.decode(val))
