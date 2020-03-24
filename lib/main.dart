@@ -5,7 +5,12 @@ import 'package:dandu_provider/page/mine/mine_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(App());
+void main() => runApp(
+  MultiProvider(
+    providers: providers,
+    child: App(),
+  )
+);
 
 class App extends StatelessWidget {
   @override
@@ -24,21 +29,27 @@ class MainPage extends StatefulWidget {
 
   @override
   _MainPageState createState() => _MainPageState();
+
 }
 
 class _MainPageState extends State<MainPage> {
   final _controller = PageController();
-  final pageList = [MenuPage(), HomePage(), MinePage()];
+
+  List<StatelessWidget> pageList;
+
+  @override
+  void initState() {
+    super.initState();
+    pageList = [MenuPage(controller: _controller,), HomePage(controller: _controller,), MinePage()];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MultiProvider(
-        providers: providers,
-        child: PageView.builder(
+      body: PageView.builder(
           controller: _controller,
           itemCount: pageList.length,
-          itemBuilder: (context, index) => pageList[index]),
+          itemBuilder: (context, index) => pageList[index]
       ),
     );
   }
