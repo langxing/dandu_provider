@@ -1,4 +1,4 @@
-import 'package:dandu_provider/main.dart';
+import 'package:dandu_provider/page/main.dart';
 import 'package:dandu_provider/page/menu/menu_item_view.dart';
 import 'package:dandu_provider/page/text/text_page.dart';
 import 'package:flutter/material.dart';
