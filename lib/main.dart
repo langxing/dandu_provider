@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(
+  /// 全局共享数据
   MultiProvider(
     providers: providers,
     child: App(),
