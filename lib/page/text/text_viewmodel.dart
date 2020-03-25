@@ -14,6 +14,11 @@ class TextViewModel extends BaseViewModel {
   List<X> get data => _data;
 
   @override
+  void doInit(BuildContext context) {
+    super.doInit(context);
+    loadData(context);
+  }
+
   void loadData(BuildContext context) async {
     await Future.delayed(
         Duration(milliseconds: 100)

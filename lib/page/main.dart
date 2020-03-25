@@ -6,11 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() => runApp(
+  App()
   /// 全局共享数据
-  MultiProvider(
-    providers: providers,
-    child: App(),
-  )
+//  MultiProvider(
+//    providers: providers,
+//    child: App(),
+//  )
 );
 
 class App extends StatelessWidget {
@@ -34,7 +35,10 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  final _controller = PageController();
+  final _controller = PageController(
+    initialPage: 1,
+    keepPage: true
+  );
 
   List<StatelessWidget> pageList;
 

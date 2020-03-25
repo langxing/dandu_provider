@@ -18,8 +18,13 @@ class HomeViewModel extends BaseViewModel {
   void hideLoading(BuildContext context) {
     _manager.hideLoading(context);
   }
-  
+
   @override
+  void doInit(BuildContext context) {
+    super.doInit(context);
+    loadData(context);
+  }
+
   void loadData(BuildContext context) async {
     await Future.delayed(
         Duration(milliseconds: 100)

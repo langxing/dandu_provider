@@ -22,10 +22,6 @@ abstract class BaseViewModel with ChangeNotifier {
 
   }
 
-  /// 加载数据
-  @protected
-  void loadData(BuildContext context);
-
   /// 内存回收
   void dispose();
 

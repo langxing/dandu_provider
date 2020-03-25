@@ -1,5 +1,6 @@
 import 'package:dandu_provider/page/main.dart';
 import 'package:dandu_provider/page/menu/menu_item_view.dart';
+import 'package:dandu_provider/page/sound/sound_page.dart';
 import 'package:dandu_provider/page/text/text_page.dart';
 import 'package:flutter/material.dart';
 
@@ -103,7 +104,7 @@ class MenuPage extends StatelessWidget {
           MenuItemView(
             "声音",
             onClick: () {
-
+              Navigator.of(context).push(MaterialPageRoute(builder: (_) => SoundPage()));
             },
           ),
           MenuItemView(
