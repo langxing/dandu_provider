@@ -1,9 +1,9 @@
 
-class BaseResponse<T> {
+class BaseResponse {
 
   int code;
-  List<T> list;
-  T data;
+  List list;
+  dynamic data;
   String msg;
   String status;
 
@@ -12,7 +12,7 @@ class BaseResponse<T> {
   factory BaseResponse.fromJsonList(Map<String, dynamic> json) {
     return BaseResponse(
       code: json['code'],
-      list: json['datas'] != null ? json['datas'] as List<T> : null,
+      list: json['datas'] != null ? json['datas'] as List : null,
       msg: json['msg'],
       status: json['status'],
     );
