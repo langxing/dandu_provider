@@ -1,4 +1,3 @@
-
 import 'dart:io';
 import 'package:dandu_provider/framework/http/auth_interceptor.dart';
 import 'package:dandu_provider/model/baseresponse.dart';
@@ -15,9 +14,9 @@ class HttpManager {
         connectTimeout: 5000,
         receiveTimeout: 3000,
         // api 头部例如 https://www.baidu.com
-        baseUrl:"http://static.owspace.com",
-        contentType: new ContentType('application', 'x-www-form-urlencoded', charset: 'utf-8')
-    );
+        baseUrl: "http://static.owspace.com",
+        contentType: new ContentType('application', 'x-www-form-urlencoded',
+            charset: 'utf-8'));
     _dio = Dio(options);
     _dio.interceptors.add(AuthInterceptor());
     _dio.interceptors.add(LogInterceptor());
@@ -45,40 +44,41 @@ class HttpManager {
   }
 
   HttpManager get(String url, {Map<String, dynamic> params}) {
-    _observable = Observable.fromFuture(_get(url, params: params)).asBroadcastStream();
+    _observable =
+        Observable.fromFuture(_get(url, params: params)).asBroadcastStream();
     return this;
   }
 
   HttpManager post(String url, {Map<String, dynamic> params}) {
-    _observable = Observable.fromFuture(_post(url, params: params)).asBroadcastStream();
+    _observable =
+        Observable.fromFuture(_post(url, params: params)).asBroadcastStream();
     return this;
   }
 
-  HttpManager mapToList() {
-    _observable.map((Response data) {
+  void mapToList({void onSuccess(List<dynamic> data), void onError(int code, String msg)}) {
+    _observable.map<BaseResponse>((Response data) {
       print("map:$data");
       return BaseResponse.fromJsonList(data.data);
+    }).listen((BaseResponse res) {
+      if (res.code == 0) {
+        onSuccess(res.list);
+      } else {
+        onError(res.code, res.msg);
+      }
     });
-    return this;
   }
 
-  HttpManager mapToObject() {
-    _observable.map((dynamic data) {
+  void mapToObject({void onSuccess(dynamic data), void onError(int code, String msg)}) {
+    _observable.map<BaseResponse>((dynamic data) {
       print("map:$data");
       return BaseResponse.fromJsonObject(data);
+    }).listen((BaseResponse res) {
+      if (res.code == 0) {
+        onSuccess(res.data);
+      } else {
+        onError(res.code, res.msg);
+      }
     });
-    return this;
   }
 
-  void complete({void onSuccess(dynamic data), void onError(int code, String msg)}) {
-    _observable.listen((response) {
-      if (response.data.code == 0) {
-        onSuccess(response.data.list ?? response.data.data);
-      } else {
-        onError(response.data.code, response.data.msg);
-      }
-    }, onError: () {
-      onError(-1, "服务异常，请稍后重试");
-    });
-  }
 }
